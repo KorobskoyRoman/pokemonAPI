@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="N1P-Qi-YTv">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="rdC-sl-05S">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Main View Controller-->
+        <!--Pokemons-->
         <scene sceneID="cbN-0b-fgy">
             <objects>
                 <tableViewController id="N1P-Qi-YTv" customClass="MainViewController" customModule="fetchData" customModuleProvider="target" sceneMemberID="viewController">
@@ -33,7 +34,7 @@
                                                         <constraint firstAttribute="width" constant="100" id="M6b-r4-Cvy"/>
                                                     </constraints>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="name" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H2q-4r-UkO">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="name" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H2q-4r-UkO">
                                                     <rect key="frame" x="108" y="35" width="286" height="30"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                                     <nil key="textColor"/>
@@ -61,8 +62,69 @@
                             <outlet property="delegate" destination="N1P-Qi-YTv" id="WFu-hY-UcA"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" title="Pokemons" id="2WF-Wl-u8k"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TRX-OT-Xx0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1055.072463768116" y="93.75"/>
+        </scene>
+        <!--Details Pokemon View Controller-->
+        <scene sceneID="kEn-m3-06Z">
+            <objects>
+                <viewController id="f0P-eA-RiU" customClass="DetailsPokemonViewController" customModule="fetchData" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="rac-is-rLz">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="93z-fc-xKZ">
+                                <rect key="frame" x="20" y="44" width="150" height="150"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="150" id="Uti-Af-6YN"/>
+                                    <constraint firstAttribute="width" constant="150" id="q8E-Wa-W4L"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TU3-1y-4iO">
+                                <rect key="frame" x="253" y="44" width="67" height="30"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="25"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="xNe-LT-neh"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="TU3-1y-4iO" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="93z-fc-xKZ" secondAttribute="trailing" constant="8" symbolic="YES" id="CBw-pR-mX3"/>
+                            <constraint firstItem="xNe-LT-neh" firstAttribute="trailing" secondItem="TU3-1y-4iO" secondAttribute="trailing" constant="94" id="w3n-vi-oMu"/>
+                            <constraint firstItem="93z-fc-xKZ" firstAttribute="top" secondItem="xNe-LT-neh" secondAttribute="top" id="xXn-76-Cd0"/>
+                            <constraint firstItem="TU3-1y-4iO" firstAttribute="top" secondItem="xNe-LT-neh" secondAttribute="top" id="yPH-dp-Yhj"/>
+                            <constraint firstItem="93z-fc-xKZ" firstAttribute="leading" secondItem="xNe-LT-neh" secondAttribute="leading" constant="20" id="zs7-dr-BrQ"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="ugi-Km-MGW"/>
+                    <connections>
+                        <outlet property="imageView" destination="93z-fc-xKZ" id="PHT-UD-JbN"/>
+                        <outlet property="pokemonNameLabel" destination="TU3-1y-4iO" id="ejZ-k0-rz5"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="RnQ-di-ceb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1819" y="94"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="s48-nT-4Rj">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="rdC-sl-05S" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="MC2-vH-Cy5">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="N1P-Qi-YTv" kind="relationship" relationship="rootViewController" id="v70-fH-bi6"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Tle-Ai-b0A" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="144.92753623188406" y="93.75"/>
         </scene>

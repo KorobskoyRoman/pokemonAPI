@@ -39,6 +39,13 @@ class MainViewController: UITableViewController {
     }
 
     // MARK: - Table view data source
+    
+//    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+//        if let count = pokemons.count {
+//            print(count)
+//            if indexPath.row == (count - 1)
+//        }
+//    }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
@@ -52,6 +59,23 @@ class MainViewController: UITableViewController {
         cell.configurePokemonCell(pokemon: pokemon)
         return cell
     }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let detailsPokemonVC = DetailsPokemonViewController()
+        let pokemon = pokemons[indexPath.row]
+        detailsPokemonVC.pokemon = pokemon
+        detailsPokemonVC.title = pokemon.name
+        navigationController?.pushViewController(detailsPokemonVC, animated: true)
+    }
+    
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        if segue.identifier == "ShowDetails" {
+//            let detailsPokemonVC = DetailsPokemonViewController()
+//            let pokemon = pokemons[IndexPath.row]
+//            detailsPokemonVC.pokemon = pokemon
+//            detailsPokemonVC.title = pokemon.name
+//        }
+//    }
 
     /*
     // Override to support conditional editing of the table view.

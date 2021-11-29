@@ -27,4 +27,20 @@ class NetworkData {
             }
         }
     }
+    
+    func fetchPokemonDetails(urlString: String, response: @escaping(PokemonModel?, Error?) -> Void) {
+        NetworkManager.shared.requestData(urlString: urlString) { result in
+            switch result {
+            case .success(let data):
+                do {
+                    let pokemon = try JSONDecoder().decode(PokemonModel.self, from: data)
+                    response(pokemon, nil)
+                } catch let jsonError{
+                    print("error decode \(jsonError)")
+                }
+            case .failure(let error):
+                print("Error requesting \(error.localizedDescription)")
+            }
+        }
+    }
 }
